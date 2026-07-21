@@ -108,6 +108,18 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
+                        <fieldset class="consent-panel">
+                            <legend>Privacy choices</legend>
+                            <label class="consent-option" for="privacy-consent">
+                                <input type="checkbox" id="privacy-consent" name="privacy_consent" value="Agreed" required>
+                                <span><strong>Required:</strong> I have read the <a href="legal.html#privacy" target="_blank">Privacy Policy</a> and agree that KOBRLA may use my information to respond to this enquiry.</span>
+                            </label>
+                            <label class="consent-option" for="marketing-consent">
+                                <input type="checkbox" id="marketing-consent" name="marketing_consent" value="Opted in">
+                                <span><strong>Optional:</strong> I would like to receive KOBRLA news, event invitations and professional updates. I can unsubscribe at any time.</span>
+                            </label>
+                            <p class="consent-note">Please do not include unnecessary sensitive or confidential information. Submitting this form does not create a solicitor-client relationship.</p>
+                        </fieldset>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
@@ -130,6 +142,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
+            <nav class="legal-links" aria-label="Legal information">
+                <a href="legal.html#notice">Legal Notice</a>
+                <a href="legal.html#terms">Terms of Use</a>
+                <a href="legal.html#privacy">Privacy Policy</a>
+                <a href="legal.html#cookies">Cookie Notice</a>
+                <button type="button" class="cookie-settings-link" data-cookie-settings>Cookie Settings</button>
+            </nav>
             <p>&copy; 2026 Korean British Lawyers Association. All rights reserved.</p>
         </div>
     </footer>
