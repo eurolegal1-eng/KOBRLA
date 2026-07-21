@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Coming Soon': '준비 중',
         'Website Launch': '공식 홈페이지 개설',
         'Welcome to the new official website of the Korean British Lawyers Association.': '한영변호사협회 공식 홈페이지에 오신 것을 환영합니다.',
-        'About KOBRLA': 'KOBRLA 소개',
+        'About KOBRLA': '한영변호사 협회 소개',
         'Our Mission & Vision': '사명과 비전',
         'Guided by our motto "Collaboratio et Pax per Legem", KOBRLA is established to achieve the following objectives (Article 4 of Articles of Association):': 'KOBRLA는 “법을 통한 협력과 평화”라는 기치 아래 다음 목적을 실현하기 위해 설립되었습니다.',
         'Facilitate exchange and networking among members.': '회원 간 교류와 전문 네트워크를 촉진합니다.',
