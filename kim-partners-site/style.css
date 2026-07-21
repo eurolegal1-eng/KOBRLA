@@ -249,7 +249,7 @@ h1, h2, h3, h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 26, 47, 0.35); /* Keep the background image bright and clear */
+    background: rgba(10, 26, 47, 0.20); /* Light overlay keeps the background image bright */
     z-index: 1;
 }
 
