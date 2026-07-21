@@ -225,9 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const contactForm = document.querySelector('.contact-form');
-    contactForm?.addEventListener('submit', event => {
-        event.preventDefault();
-        const language = document.documentElement.lang;
-        alert(language === 'ko' ? '문의 양식 전송 기능은 준비 중입니다. admin@kobrla.org로 이메일을 보내주세요.' : 'The online form is being prepared. Please email admin@kobrla.org.');
-    });
+    const successMessage = contactForm?.querySelector('.form-success');
+    if (successMessage && new URLSearchParams(window.location.search).get('success') === 'true') {
+        successMessage.textContent = document.documentElement.lang === 'ko'
+            ? '문의가 정상적으로 접수되었습니다. 빠른 시일 내에 회신드리겠습니다.'
+            : 'Your message has been received. We will respond as soon as possible.';
+        successMessage.hidden = false;
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
 });
