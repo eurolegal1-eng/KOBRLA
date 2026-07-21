@@ -131,6 +131,23 @@ document.addEventListener('DOMContentLoaded', () => {
         'Partnership Proposal': '협력 제안',
         'Message': '메시지',
         'Send Message': '보내기',
+        'Privacy choices': '개인정보 동의 선택',
+        'Required:': '필수:',
+        'I have read the': '다음 문서를 확인했습니다:',
+        'Privacy Policy': '개인정보처리방침',
+        'and agree that KOBRLA may use my information to respond to this enquiry.': '문의에 답변하기 위해 KOBRLA가 제 정보를 처리하는 데 동의합니다.',
+        'Optional:': '선택:',
+        'I would like to receive KOBRLA news, event invitations and professional updates. I can unsubscribe at any time.': 'KOBRLA 소식, 행사 초청 및 전문 정보를 이메일로 받겠습니다. 언제든지 수신을 철회할 수 있습니다.',
+        'Please do not include unnecessary sensitive or confidential information. Submitting this form does not create a solicitor-client relationship.': '불필요한 민감정보나 비밀정보는 입력하지 마십시오. 이 양식을 제출해도 변호사와 의뢰인의 관계가 성립하지 않습니다.',
+        'Legal & Privacy': '법적 고지 및 개인정보 보호',
+        'Important information about using this website and your data': '웹사이트 이용 및 개인정보 처리에 관한 중요 안내',
+        'Legal Notice': '법적 고지',
+        'Terms of Use': '이용약관',
+        'Cookie Notice': '쿠키 안내',
+        'Cookie Settings': '쿠키 설정',
+        'Marketing Consent': '마케팅 수신 동의',
+        'Forms & Self-assessment': '문의·자가진단 양식',
+        'Open Cookie Settings': '쿠키 설정 열기',
         'Benefits:': '혜택:',
         'Voting rights, eligibility for office, full access to events.': '의결권, 임원 선임자격 및 전체 행사 참여권',
         'Access to seminars and networking events.': '세미나와 네트워킹 행사 참여',
@@ -202,7 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(localStorage.getItem('kobrla-language') || 'ko');
 
     const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const closeMobileMenu = () => {
+        if (!mobileBtn || !nav) return;
+        nav.classList.remove('nav-active');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        const icon = mobileBtn.querySelector('i');
+        if (icon) {
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        }
+    };
+
     if (mobileBtn && nav) {
+        mobileBtn.setAttribute('aria-expanded', 'false');
         mobileBtn.addEventListener('click', () => {
             nav.classList.toggle('nav-active');
             mobileBtn.setAttribute('aria-expanded', String(nav.classList.contains('nav-active')));
@@ -212,6 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.toggle('fa-times', nav.classList.contains('nav-active'));
             }
         });
+
+        nav.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -219,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = anchor.getAttribute('href');
             if (targetId === '#') return;
             event.preventDefault();
-            nav?.classList.remove('nav-active');
+            closeMobileMenu();
             document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
@@ -233,4 +266,48 @@ document.addEventListener('DOMContentLoaded', () => {
         successMessage.hidden = false;
         window.history.replaceState({}, document.title, window.location.pathname);
     }
+
+    const cookieKey = 'kobrla-cookie-preferences';
+    const cookieText = () => document.documentElement.lang === 'ko' ? {
+        title: '쿠키 설정', message: '사이트 운영에 필요한 필수 저장기술을 사용합니다. 선택적 분석 쿠키는 동의한 경우에만 사용합니다.',
+        essential: '필수만 허용', accept: '모두 허용', settings: '설정', save: '선택 저장', analytics: '선택적 분석 쿠키 허용', close: '닫기'
+    } : {
+        title: 'Cookie choices', message: 'We use essential storage to operate this site. Optional analytics cookies are used only with your consent.',
+        essential: 'Essential only', accept: 'Accept all', settings: 'Settings', save: 'Save choices', analytics: 'Allow optional analytics cookies', close: 'Close'
+    };
+    const saveCookieChoice = analytics => {
+        localStorage.setItem(cookieKey, JSON.stringify({ essential: true, analytics, updated: new Date().toISOString() }));
+        document.querySelector('.cookie-consent')?.remove();
+        document.querySelector('.cookie-modal')?.remove();
+    };
+    const openCookieSettings = () => {
+        document.querySelector('.cookie-modal')?.remove();
+        const text = cookieText();
+        const saved = JSON.parse(localStorage.getItem(cookieKey) || 'null');
+        const modal = document.createElement('div');
+        modal.className = 'cookie-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'cookie-modal-title');
+        modal.innerHTML = `<div class="cookie-modal-card"><button type="button" class="cookie-close" aria-label="${text.close}">&times;</button><h2 id="cookie-modal-title">${text.title}</h2><p>${text.message}</p><label class="cookie-toggle"><input type="checkbox" disabled checked> <span>${document.documentElement.lang === 'ko' ? '필수 쿠키 및 저장기술 (항상 사용)' : 'Essential cookies and storage (always active)'}</span></label><label class="cookie-toggle"><input id="cookie-analytics" type="checkbox" ${saved?.analytics ? 'checked' : ''}> <span>${text.analytics}</span></label><div class="cookie-actions"><button type="button" class="btn btn-secondary cookie-essential">${text.essential}</button><button type="button" class="btn btn-primary cookie-save">${text.save}</button></div></div>`;
+        document.body.appendChild(modal);
+        modal.querySelector('.cookie-close').addEventListener('click', () => modal.remove());
+        modal.querySelector('.cookie-essential').addEventListener('click', () => saveCookieChoice(false));
+        modal.querySelector('.cookie-save').addEventListener('click', () => saveCookieChoice(modal.querySelector('#cookie-analytics').checked));
+        modal.querySelector('.cookie-close').focus();
+    };
+    const showCookieBanner = () => {
+        if (localStorage.getItem(cookieKey) || document.querySelector('.cookie-consent')) return;
+        const text = cookieText();
+        const banner = document.createElement('aside');
+        banner.className = 'cookie-consent';
+        banner.setAttribute('aria-label', text.title);
+        banner.innerHTML = `<div><strong>${text.title}</strong><p>${text.message} <a href="legal.html#cookies">${document.documentElement.lang === 'ko' ? '자세히 보기' : 'Learn more'}</a></p></div><div class="cookie-actions"><button type="button" class="btn btn-secondary cookie-essential">${text.essential}</button><button type="button" class="btn btn-secondary cookie-open-settings">${text.settings}</button><button type="button" class="btn btn-primary cookie-accept">${text.accept}</button></div>`;
+        document.body.appendChild(banner);
+        banner.querySelector('.cookie-essential').addEventListener('click', () => saveCookieChoice(false));
+        banner.querySelector('.cookie-accept').addEventListener('click', () => saveCookieChoice(true));
+        banner.querySelector('.cookie-open-settings').addEventListener('click', openCookieSettings);
+    };
+    document.querySelectorAll('[data-cookie-settings]').forEach(button => button.addEventListener('click', openCookieSettings));
+    showCookieBanner();
 });
