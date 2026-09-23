@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '£30 per year': '연 £30',
         '£20 per year': '연 £20',
         '£5 per year': '연 £5',
-        "Membership applications are subject to approval under the Association's Constitution. The applicable annual fee, payment due date, renewal arrangements, cancellation process and any refund terms will be confirmed before payment. Institutional membership fees are agreed separately. Please contact us to apply; this website does not currently collect membership payments.": '회원가입은 협회 정관에 따른 승인을 거칩니다. 연회비, 납부기한, 갱신, 탈퇴 및 환불 조건은 결제 전에 안내합니다. 기관회원 회비는 별도로 정합니다. 가입 신청은 협회에 문의해 주십시오. 현재 이 웹사이트에서는 회비를 결제받지 않습니다.',
+        "Membership applications are subject to approval under the Association's Constitution. The membership year runs from 1 January to 31 December, and annual membership renews on 1 January. Any first-year fee for members joining part-way through the year, the payment due date, cancellation process and any refund terms will be confirmed before payment. Institutional membership fees are agreed separately. Please contact us to apply; this website does not currently collect membership payments.": '회원가입은 협회 정관에 따른 승인을 거칩니다. 회원연도는 1월 1일부터 12월 31일까지이며, 매년 1월 1일 갱신됩니다. 연도 중 가입자의 첫해 회비, 납부기한, 탈퇴 및 환불 조건은 결제 전에 안내합니다. 기관회원 회비는 별도로 정합니다. 가입 신청은 협회에 문의해 주십시오. 현재 이 웹사이트에서는 회비를 결제받지 않습니다.',
         'Benefits:': '혜택:',
         'Voting rights, eligibility for office, full access to events.': '의결권, 임원 선임자격 및 전체 행사 참여권',
         'Access to seminars and networking events.': '세미나와 네트워킹 행사 참여',
