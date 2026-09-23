@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Student Member — £5/year': '학생회원 — 연 £5',
         'Institutional membership enquiry': '기관회원 가입 문의',
         'Unsure / eligibility enquiry': '자격 확인 문의',
-        'Committee preference (optional)': '희망 위원회 (선택)',
+        'Committee preference (if any; optional)': '희망 위원회 (있는 경우에만 선택)',
         'No preference': '희망 위원회 없음',
         'Education and mentoring': '교육 및 멘토링',
         'Networking and fellowship': '네트워킹 및 친목',
