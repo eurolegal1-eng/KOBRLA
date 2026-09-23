@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Related Organizations': '관련 기업 및 단체',
         'Member Welfare & Rights': '회원 권익과 지원',
         'Grievance System': '고충처리제도',
-        'Our Rights Protection Committee handles grievances regarding discrimination, harassment, or unfair treatment. All reports are confidential and protected from retaliation.': '권익보호위원회는 차별, 괴롭힘 또는 부당한 대우에 관한 고충을 처리합니다. 모든 신고는 비밀로 관리되며 불이익으로부터 보호됩니다.',
+        'Members may raise concerns about discrimination, harassment or unfair treatment through the Association\'s contact channel. Reports will be handled with appropriate care, access controls and safeguards under the applicable grievance procedure. Please do not submit confidential client information through the general enquiry form.': '회원은 차별, 괴롭힘 또는 부당한 대우에 관한 우려를 협회 문의 채널을 통해 제기할 수 있습니다. 신고는 적용되는 고충처리 절차에 따라 적절한 주의와 접근 제한 및 보호조치를 적용하여 처리합니다. 일반 문의 양식에는 의뢰인의 비밀정보를 입력하지 마십시오.',
         'Report a Grievance →': '고충 신고하기 →',
         'Ready to Join?': '함께하시겠습니까?',
         'Apply for membership today and be part of the community.': '지금 회원으로 가입하여 한영 법률 전문가 공동체에 참여하세요.',
